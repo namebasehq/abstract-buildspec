@@ -1,6 +1,6 @@
 {
   "name": "abstract-buildspec",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Helper class to hierarchically generate buildspec.yml files.",
   "main": "index.js",
   "repository": {

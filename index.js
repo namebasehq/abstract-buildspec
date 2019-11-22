@@ -15,14 +15,22 @@ module.exports = class AbstractBuildspec {
     const indent = this.getIndent(depth);
 
     if (Array.isArray(data)) {
-      return data.map(row => `\n${indent}- ${row}`).join('');
+      if (data.length > 0) {
+        return data.map(row => `\n${indent}- ${row}`).join('');
+      } else {
+        return '';
+      }
     }
 
     if (typeof data === 'object') {
       return Object.keys(data)
         .map(heading => {
           const child = this.format(data[heading], depth + 1);
-          return `\n${indent}${heading}:${child}`;
+          if (child) {
+            return `\n${indent}${heading}:${child}`;
+          } else {
+            return '';
+          }
         })
         .join('');
     }
@@ -31,12 +39,13 @@ module.exports = class AbstractBuildspec {
   }
 
   static formatBuildspec() {
-    const version = 'version:' + this.format(this.version());
-    const env = 'env:' + this.format(this.env());
-    const phases = 'phases:' + this.format(this.phases());
-    const cache = 'cache:' + this.format(this.cache());
-    const artifacts = 'artifacts:' + this.format(this.artifacts());
-    return `${version}\n${env}\n${phases}\n${cache}\n${artifacts}`;
+    return this.format({
+      'version': this.version(),
+      'env': this.env(),
+      'phases': this.phases(),
+      'cache': this.cache(),
+      'artifacts': this.artifacts(),
+    }, 0).trim();
   }
 
   static emit(fileName) {
