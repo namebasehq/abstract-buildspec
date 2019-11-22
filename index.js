@@ -1,3 +1,5 @@
+const fs = require('fs');
+
 module.exports = class AbstractBuildspec {
   constructor() {
     if (new.target === AbstractBuildspec) {
