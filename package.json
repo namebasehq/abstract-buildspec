@@ -1,0 +1,20 @@
+{
+  "name": "abstract-buildspec",
+  "version": "1.0.0",
+  "description": "Helper class to hierarchically generate buildspec.yml files.",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/namebasehq/abstract-buildspec.git"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "aws",
+    "codebuild",
+    "buildspec"
+  ],
+  "author": "Anthony Liu",
+  "license": "MIT"
+}
